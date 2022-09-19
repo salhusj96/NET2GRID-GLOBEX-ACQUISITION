@@ -84,11 +84,13 @@
 - **Objective #1 (AD Shell & Scripting)**
   - Marygrace Ledesma
   - Courtney Johnson
+  - Abel Ortega
 - **Objective #2 (VPN Tunneling)**
   - Ariel Doyle
   - Gary King
 - **Objective #3 (Captive Portal)**
   - Fabio Alvarez
+  - Sujan Thapa
 - **Documentation & Deliverables**
   - Everybody
 ## **Presentation Deck**
