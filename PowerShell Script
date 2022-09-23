@@ -4,11 +4,16 @@ New-NetIPAddress -IPAddress 192.168.1.254 -PrefixLength 24 -InterfaceIndex 15 - 
 #Assign Windows Server DNS 
 Set-DnsClientServerAddress -InterfaceIndex 15 -ServerAddresses 192.168.1.254
 
+#Renames the Windows Server VM
 $newname = "Net2GridGlobeXAcquisition"
 
 Rename-Computer -NewName $newname -force
 
+#Installs AD-Domain-Services
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+
+#Creates an AD Forest
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath C:\Windows\NTDS -DomainMode WinThreshold -DomainName Net2GridGlobeXAcquisition.com -DomainNetbiosName Net2GridGlobeXAcquisition -ForestMode WinThreshold -InstallDns:$true -LogPath C:\Windows\NTDS -NoRebootOnCompletion:$true -SafeModeAdministratorPassword $Password -SysvolPath C:\Windows\SYSVOL -Force:$true
 
 #Create AD User
 #Import AD module to use Active Directiory command
