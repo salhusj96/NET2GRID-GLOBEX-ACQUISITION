@@ -10,4 +10,20 @@ Rename-Computer -NewName $newname -force
 
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
+#Create AD User
+#Import AD module to use Active Directiory command
+Import-Module ActiveDirectory
+
+#Input variables from users
+$firstname = Read-Host -Prompt "Enter First Name"
+$lastname = Read-Host -Prompt "Enter Last Name"
+
+New-ADUser `
+  -Name ("$firstname $lastname") `
+  -GivenName "$firstname" `
+  -Surname "$lastname" `
+  -UserPrincipalName "$firstname.$lastname" `
+  -Path "OU=Net2GridGlobeXAcquisition,DC=corpglobexpower,DC=com" `
+  -ChangePasswordAtLogon $true `
+  -Enable $true `
 
