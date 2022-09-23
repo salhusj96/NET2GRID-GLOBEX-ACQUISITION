@@ -1,8 +1,8 @@
 #Assign Windows Server static IP Address 
-New-NetIPAddress -IPAddress 192.168.59.25 -PrefixLength 24 -InterfaceIndex 15 - DefaultGateway 192.168.59.1
+New-NetIPAddress -IPAddress 192.168.1.254 -PrefixLength 24 -InterfaceIndex 15 - DefaultGateway 192.168.1.1
 
 #Assign Windows Server DNS 
-Set-DnsClientServerAddress -InterfaceIndex 15 -ServerAddresses 192.158.59.25
+Set-DnsClientServerAddress -InterfaceIndex 15 -ServerAddresses 192.168.1.254
 
 $newname = "Net2GridGlobeXAcquisition"
 
