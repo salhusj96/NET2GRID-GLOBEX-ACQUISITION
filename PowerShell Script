@@ -16,15 +16,10 @@ Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath C:\Windows\NTDS -DomainMode WinThreshold -DomainName Net2GridGlobeXAcquisition.com -DomainNetbiosName Net2GridGlobeXAcquisition -ForestMode WinThreshold -InstallDns:$true -LogPath C:\Windows\NTDS -NoRebootOnCompletion:$true -SafeModeAdministratorPassword $Password -SysvolPath C:\Windows\SYSVOL -Force:$true
 
 #Create an OU
-#Import AD module to use AD command
-Import-MOdule ActiveDirectory
-Snewou = Read-Host -Prompt "Enter Organizational Unit"
+$newou = Read-Host -Prompt "Enter Organizational Unit"
 New-ADOrganizationalUnit -Name "$newou" -Path "OU=Net2GridGlobeXAcquisition,DC=corpglobexpower,DC=com"
 
 #Create AD User
-#Import AD module to use Active Directiory command
-#Import-Module ActiveDirectory
-
 #Input variables from users
 $firstname = Read-Host -Prompt "Enter First Name"
 $lastname = Read-Host -Prompt "Enter Last Name"
